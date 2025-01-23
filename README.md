@@ -6,7 +6,7 @@ Tap to Pay on Android allows merchants to accept contactless payments using a su
 
 ## Step 1: Obtain API Credentials
 
-- Access the [developer dashboard](?path=docs/Getting-Started/Getting-Started-Dev-Portal.md) to create a workspace by using a [certification or production MID](?path=docs/Resources/Guides/Dev-Studio/Account-Management.md) and to obtain an [API-Key and API-Secret](?path=docs/Resources/Guides/Dev-Studio/Key-Management.md).
+- Access the developer dashboard to create a workspace by using a certification or production MID and to obtain an API-Key and API-Secret [ by following the steps here](https://developer.fiserv.com/product/CommerceHub/docs/?path=docs/In-Person/Integrations/Mobile-SDK/Android-TTP.md&branch=preview).
 
 <!-- theme: info -->
 > These are required in the app. Please contact your account representative to obtain your `ppId` and `hostPort`.
@@ -34,7 +34,7 @@ Add the Android SDK dependency to your app by following these steps:
     ```groovy
     dependencies {
         // Fiserv TTP Library
-        implementation ('com.fiserv.ch:ttp-payment:1.0.0') {
+        implementation ('com.fiserv.ch:ttp-payment:1.0.2') {
             changing = true
         }
     }
@@ -144,7 +144,7 @@ type: tab
 
 **Submit a Cancels API request:**
 
-At least one [reference transaction identifier](?path=docs/Resources/Master-Data/Reference-Transaction-Details.md) must be provided to perform a [cancel](?path=docs/Resources/API-Documents/Payments/Cancel.md).
+At least one reference transaction identifier must be provided to perform a cancel.
 
 <!-- theme: info -->
 > To support partial cancels it must be configured in Merchant Boarding and Configuration. Please contact your account representative for details.
@@ -173,7 +173,7 @@ type: tab
 
 **Submit a Refund API request for a payment without tap:**
 
-At least one [reference transaction identifier](?path=docs/Resources/Master-Data/Reference-Transaction-Details.md) must be provided to perform a [tagged refund](?path=docs/Resources/API-Documents/Payments/Refund-Tagged.md).
+At least one reference transaction identifier must be provided to perform a tagged refund.
 
 <!-- theme: warning -->
 > When processing a PIN debit refund request, submit a refund payment with tap using an unmatched tagged refund.
@@ -210,9 +210,9 @@ CoroutineScope(Dispatchers.Main).launch {
 
 **Submit a Refund API request for a payment with tap:**
 
-The `fiservTTPCardReader.refundCard` API supports both [unmatched tagged refunds](?path=docs/Resources/API-Documents/Payments/Refund-Unmatched.md) and [open refunds](?path=docs/Resources/API-Documents/Payments/Refund-Open.md).
+The `fiservTTPCardReader.refundCard` API supports both unmatched tagged refunds and open refunds.
 
-At least one [reference transaction identifier](?path=docs/Resources/Master-Data/Reference-Transaction-Details.md) must be provided to perform an [unmatched tagged refund](?path=docs/Resources/API-Documents/Payments/Refund-Unmatched.md).
+At least one reference transaction identifier must be provided to perform an unmatched tagged refund.
 
 <!-- theme: warning -->
 > If the card used for the refund request is a PIN debit, the user will see a PIN entry screen after tapping the card.
@@ -247,7 +247,7 @@ CoroutineScope(Dispatchers.Main).launch {
 }
 ```
 
-No [reference transaction identifier](?path=docs/Resources/Master-Data/Reference-Transaction-Details.md) is required to perform an [open refund](?path=docs/Resources/API-Documents/Payments/Refund-Open.md).
+No reference transaction identifier is required to perform an open refund.
 
 ```java
 val amount = 10.99
@@ -278,47 +278,10 @@ CoroutineScope(Dispatchers.Main).launch {
 }
 ```
 
-<!--
-type: tab
--->
-
-**Submit an Inquiry API request:**
-
-At least one [reference transaction identifier](?path=docs/Resources/Master-Data/Reference-Transaction-Details.md) must be provided to perform an [inquiry](?path=docs/Resources/API-Documents/Payments/Inquiry.md).
-
-```java
-val referenceMerchantTransactionId = "referenceMerchantTransactionId"
-
-val referenceTransactionDetails: ReferenceTransactionDetails = ReferenceTransactionDetails(
-    referenceMerchantTransactionId )
-
-CoroutineScope(Dispatchers.Main).launch {
-    try{
-        FiservTTPCardReader.inquiry(referenceTransactionDetails)
-    } catch (fiservTTPCardReaderError:FiservTTPCardReaderException) {
-        // TODO handle error
-    }
-}
-```
-
-<!-- type: tab-end -->
-
----
-
-<!--
-## Download a sample test app
-
-Download [Commerce Hub's Tap to Pay on Android Test App].
--->
-
----
-
 ## See also
 
-- [Commerce Hub Package](https://maven.pkg.github.com/Fiserv/ch-ttp-androidsdk)
+- [Commerce Hub Tap to Pay on Android Integration Guide](https://developer.fiserv.com/product/CommerceHub/docs/?path=docs/In-Person/Integrations/Mobile-SDK/Android-TTP.md&branch=preview)
 
-<!--
-- [Commerce Hub Sample App]NEED_LINK
--->
+- [Commerce Hub Sample App](https://github.com/Fiserv/ch-ttp-android-sample-app)
 
 ---
