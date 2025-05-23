@@ -34,7 +34,7 @@ Add the Android SDK dependency to your app by following these steps:
     ```groovy
     dependencies {
         // Fiserv TTP Library
-        implementation ('com.fiserv.ch:ttp-payment:1.0.2') {
+        implementation ('com.fiserv.ch:ttp-payment:XXX.XX.XX') {
             changing = true
         }
     }
